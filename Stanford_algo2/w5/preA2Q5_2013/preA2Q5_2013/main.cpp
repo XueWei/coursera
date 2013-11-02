@@ -71,7 +71,7 @@ float TSP( int status, int x)
         if (  (status & ( 1 << i )) && i != x)
             dp[status][x] = min(dp[status][x], TSP(newstate, i) + adj[i][x]);
     
-	return dp[ status ][ x ];
+    return dp[ status ][ x ];
 }
 
 void doA2Q5()
