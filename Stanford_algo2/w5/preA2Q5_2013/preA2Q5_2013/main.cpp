@@ -92,15 +92,14 @@ void doA2Q5()
     init(G.n, adj, dp);
     delete [] G.x;
     delete [] G.y;
-
-	printf( "%f\n", TSP( (1 << G.n) - 1, src) );
+    
+    printf( "%f\n", TSP( (1 << G.n) - 1, src) );
     delete [] dp;
     delete [] adj;
 }
 
 int main(int argc, const char * argv[])
 {
-
     doA2Q5();
     return 0;
 }
