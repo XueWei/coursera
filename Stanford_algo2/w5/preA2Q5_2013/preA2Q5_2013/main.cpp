@@ -29,7 +29,8 @@ float distance(float Ax, float Ay, float Bx, float By)
 }
 
 // initial status.
-void preInit(int n, float **&dp) {
+void preInit(int n, float **&dp)
+{
     dp = new float*[1<<n];
     
     for (int i=0; i<(1<<n); i++)
@@ -61,16 +62,15 @@ void init(int n, float **&adj, float **dp)
 // TSP recursive
 float TSP( int status, int x)
 {
-    
-	if ( dp[ status ][ x ] != -1 )
-		return dp[ status ][ x ];
+    if ( dp[ status ][ x ] != -1 )
+        return dp[ status ][ x ];
     
     int newstate = status & (~(1<<x));
-	dp[ status ][ x ] = 100000.0;
-	for ( int i = 0; i < G.n; ++i )
-		if (  (status & ( 1 << i )) && i != x) {
-			dp[status][x] = min(dp[status][x], TSP(newstate, i) + adj[i][x]);
-        }
+    dp[ status ][ x ] = 100000.0;
+    for ( int i = 0; i < G.n; ++i )
+        if (  (status & ( 1 << i )) && i != x)
+            dp[status][x] = min(dp[status][x], TSP(newstate, i) + adj[i][x]);
+    
 	return dp[ status ][ x ];
 }
 
